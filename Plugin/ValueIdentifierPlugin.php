@@ -103,6 +103,9 @@ class ValueIdentifierPlugin
         parse_str($qspart, $qsvars);
         unset($qsvars[$varname]);
         $newqs = http_build_query($qsvars);
+        if($newqs == '') {
+            return $urlpart;
+        }
         return $urlpart . '?' . $newqs;
     }
 }
